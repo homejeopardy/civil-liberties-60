@@ -18,18 +18,19 @@ const embedUrl = (id) => `https://www.youtube.com/embed/${id}?rel=0`;
 const esc = (s = "") => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 let DATA = { episodes: [] };
+let CONFIG = {};
 let activeTopic = "All";
 let query = "";
 
 init();
 
 async function init() {
-  try {
-    const res = await fetch("data/episodes.json", { cache: "no-store" });
-    DATA = await res.json();
-  } catch (e) {
-    DATA = { episodes: [] };
-  }
+  const [dataRes, cfgRes] = await Promise.allSettled([
+    fetch("data/episodes.json", { cache: "no-store" }).then((r) => r.json()),
+    fetch("scripts/config.json", { cache: "no-store" }).then((r) => r.json()),
+  ]);
+  DATA = dataRes.status === "fulfilled" ? dataRes.value : { episodes: [] };
+  CONFIG = cfgRes.status === "fulfilled" ? cfgRes.value : {};
   const eps = DATA.episodes || [];
 
   wireChannelLinks();
@@ -146,19 +147,66 @@ function renderArchive() {
   grid.innerHTML = eps.map((ep) => card(ep)).join("");
 }
 
+function formMessage(form, html) {
+  form.innerHTML = `<p class="form-success">${html}</p>`;
+}
+
 function wireForms() {
-  $("#subscribe-form").addEventListener("submit", (e) => {
+  const contact = CONFIG.contactEmail || CONTACT;
+  const buttondown = (CONFIG.buttondown || "").trim();
+  const formspree = (CONFIG.formspree || "").trim();
+
+  // --- Newsletter signup: Buttondown if configured, else a plain email link ---
+  const subscribe = $("#subscribe-form");
+  subscribe.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = e.target.email.value.trim();
-    const subject = encodeURIComponent("Subscribe me to the Civil Liberties digest");
-    const body = encodeURIComponent(`Please add this address to the Tuesday & Thursday digest:\n\n${email}`);
-    window.location.href = `mailto:${CONTACT}?subject=${subject}&body=${body}`;
+    const email = subscribe.email.value.trim();
+    if (!email) return;
+    if (buttondown) {
+      const fd = new FormData();
+      fd.append("email", email);
+      // no-cors: the request is delivered to Buttondown; we can't read the opaque
+      // response, so we optimistically confirm. Buttondown then emails to confirm.
+      fetch(`https://buttondown.com/api/emails/embed-subscribe/${buttondown}`, {
+        method: "POST",
+        mode: "no-cors",
+        body: fd,
+      }).finally(() =>
+        formMessage(subscribe, "🎉 Almost there! Check your inbox and click the link to confirm.")
+      );
+    } else {
+      const subject = encodeURIComponent("Subscribe me to the Civil Liberties digest");
+      const body = encodeURIComponent(`Please add this address to the Tuesday & Thursday digest:\n\n${email}`);
+      window.location.href = `mailto:${contact}?subject=${subject}&body=${body}`;
+    }
   });
-  $("#suggest-form").addEventListener("submit", (e) => {
+
+  // --- Suggest a topic: Formspree if configured, else a plain email link ---
+  const suggest = $("#suggest-form");
+  suggest.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const idea = e.target.idea.value.trim();
-    const subject = encodeURIComponent("Topic idea for Civil Liberties in 60 Seconds");
-    const body = encodeURIComponent(idea);
-    window.location.href = `mailto:${CONTACT}?subject=${subject}&body=${body}`;
+    const idea = suggest.idea.value.trim();
+    if (!idea) return;
+    if (formspree) {
+      try {
+        const res = await fetch(`https://formspree.io/f/${formspree}`, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(suggest),
+        });
+        formMessage(
+          suggest,
+          res.ok
+            ? "💡 Thanks! Your idea just landed in our inbox."
+            : `Sorry, something went wrong. Please email <a href="mailto:${contact}" style="color:#fff">us directly</a>.`
+        );
+      } catch {
+        formMessage(suggest, `Sorry, something went wrong. Please email <a href="mailto:${contact}" style="color:#fff">us directly</a>.`);
+      }
+    } else {
+      const subject = encodeURIComponent("Topic idea for Civil Liberties in 60 Seconds");
+      const body = encodeURIComponent(idea);
+      window.location.href = `mailto:${contact}?subject=${subject}&body=${body}`;
+    }
   });
 }

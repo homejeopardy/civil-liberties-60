@@ -1,7 +1,11 @@
 {
-  "//": "THE ONLY VALUE YOU EVER NEED TO SET. Put your YouTube channel handle (with @) or channel ID (starts with UC).",
+  "//": "YouTube: the only value needed for episodes to auto-update. The rest are optional.",
   "youtube": "@profcrump",
   "siteName": "Civil Liberties in 60 Seconds",
   "siteUrl": "",
-  "contactEmail": "ccrump@clinical.law.berkeley.edu"
+  "contactEmail": "ccrump@clinical.law.berkeley.edu",
+
+  "//forms": "Newsletter + suggestion box. Leave blank to fall back to a plain email link.",
+  "buttondown": "",
+  "formspree": ""
 }

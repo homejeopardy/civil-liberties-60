@@ -66,6 +66,9 @@ python3 -m http.server 8080 # then open http://localhost:8080
   just write them clearly in the YouTube description (e.g. a line like
   `Know your rights: ...` becomes the highlighted box, and `Label: https://url`
   lines become "Sources & further reading").
-- The newsletter and "suggest a topic" forms open the visitor's email client addressed
-  to you — no server required. Swap in a form provider later if you prefer.
+- **Newsletter & suggestion box.** Set two optional values in `scripts/config.json`:
+  - `"buttondown"`: your [Buttondown](https://buttondown.com) username → the signup form
+    subscribes people directly (with confirmation email). Blank = falls back to an email link.
+  - `"formspree"`: your [Formspree](https://formspree.io) form ID (the part after `/f/`)
+    → the "suggest a topic" box posts straight to your Formspree inbox. Blank = email link.
 - Content is educational, not legal advice (noted in the footer).

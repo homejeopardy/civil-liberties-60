@@ -371,6 +371,7 @@ a { color: inherit; }
 }
 .panel textarea { width: 100%; min-height: 92px; resize: vertical; }
 .field-note { font-size: .8rem; color: #8ea0cc; margin-top: 12px; }
+.form-success { color: #fff; font-weight: 700; font-size: 1.05rem; margin: 6px 0; }
 
 /* ---------------------------- Footer ---------------------------- */
 .site-footer { background: var(--navy-deep); color: #aebbe0; padding: 40px 0 28px; }
