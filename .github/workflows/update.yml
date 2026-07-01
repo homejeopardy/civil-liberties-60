@@ -1,0 +1,47 @@
+name: Build & deploy site
+
+# Fully automatic: rebuilds from the YouTube feed daily and on every push,
+# then publishes to GitHub Pages. No manual steps, no API keys.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 13 * * *"   # every day at 13:00 UTC
+  workflow_dispatch:        # lets you trigger a rebuild by hand if you ever want to
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Pull latest episodes from YouTube
+        run: node scripts/build.mjs
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

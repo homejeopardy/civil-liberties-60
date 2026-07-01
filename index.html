@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Civil Liberties in 60 Seconds</title>
+  <meta name="description" content="Your rights, explained in 60 seconds. Short, clear videos on free speech, privacy, due process, protest, surveillance, and more." />
+  <meta property="og:title" content="Civil Liberties in 60 Seconds" />
+  <meta property="og:description" content="Your rights, explained in 60 seconds." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="demo-banner"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Civil Liberties in 60 Seconds home">
+        <img class="brand-logo" src="assets/logo.png" alt="Civil Liberties in 60 Seconds" width="800" height="800" />
+      </a>
+      <nav class="nav">
+        <a href="#archive">Episodes</a>
+        <a href="#topics">Topics</a>
+        <a href="#engage">Subscribe</a>
+        <a class="btn btn--red" id="yt-subscribe" href="#" target="_blank" rel="noopener">Watch on YouTube</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: latest episode auto-featured -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Know your rights</span>
+        <h1>Your civil liberties, explained in 60 seconds.</h1>
+        <p class="lead">Short, clear, no-jargon videos on free speech, privacy, due process, protest, and the rights that protect you every day.</p>
+        <div class="hero-cta">
+          <a class="btn btn--red" href="#archive">Browse all episodes</a>
+          <a class="btn btn--ghost" id="yt-subscribe-2" href="#" target="_blank" rel="noopener">Subscribe on YouTube</a>
+        </div>
+      </div>
+      <div class="hero-video" id="hero-video"><!-- latest episode injected here --></div>
+    </div>
+  </section>
+  <div class="ruler" aria-hidden="true"></div>
+
+  <!-- TRENDING strip (powered by the Tue/Thu digest cadence) -->
+  <section class="section trending-band" id="trending">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="kicker">This week</div>
+          <h2>Trending now</h2>
+          <p>The episodes people are watching most right now.</p>
+        </div>
+      </div>
+      <div class="grid" id="trending-grid"></div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE: search + topic filters + full grid -->
+  <section class="section" id="archive">
+    <div class="wrap">
+      <div class="section-head" id="topics">
+        <div>
+          <div class="kicker">The archive</div>
+          <h2>Every episode</h2>
+          <p>Search the library or filter by the right you care about.</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search" type="search" placeholder="Search episodes — e.g. phone search, protest, Miranda…" aria-label="Search episodes" />
+        </label>
+        <div class="filters" id="filters" role="group" aria-label="Filter by topic"></div>
+      </div>
+
+      <div class="grid" id="archive-grid"></div>
+    </div>
+  </section>
+
+  <!-- ENGAGE: digest signup + suggest a topic -->
+  <section class="section engage" id="engage">
+    <div class="wrap">
+      <div class="engage-grid">
+        <div class="panel">
+          <h3>Get the Tuesday &amp; Thursday digest</h3>
+          <p>The week's most important civil-liberties moments, in your inbox twice a week.</p>
+          <form id="subscribe-form">
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address" />
+            <button class="btn btn--red" type="submit">Subscribe</button>
+          </form>
+          <p class="field-note">Prefer video? <a id="yt-subscribe-3" href="#" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Subscribe on YouTube →</a></p>
+        </div>
+        <div class="panel">
+          <h3>Suggest a topic</h3>
+          <p>What right do you want explained in 60 seconds? Tell us.</p>
+          <form id="suggest-form">
+            <textarea name="idea" placeholder="I'd love a 60-second explainer on…" required aria-label="Your topic idea"></textarea>
+            <button class="btn btn--red" type="submit" style="margin-top:10px">Send idea</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <strong style="color:#fff;font-size:1.05rem;">Civil Liberties in 60 Seconds</strong>
+          <div style="font-size:.86rem;margin-top:4px;">Your rights, explained — fast.</div>
+        </div>
+        <div class="social" id="social"></div>
+      </div>
+      <div class="legal">
+        <p>Educational content only — not legal advice. For your specific situation, consult a licensed attorney.</p>
+        <p>© <span id="year"></span> Civil Liberties in 60 Seconds. New episodes load automatically from YouTube.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

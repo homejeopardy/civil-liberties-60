@@ -1,0 +1,188 @@
+{
+  "demo": false,
+  "channel": {
+    "name": "Civil Liberties In 60 Seconds",
+    "id": "UC1WosI6t9fRI_wRFIkTYlzA",
+    "url": "https://www.youtube.com/channel/UC1WosI6t9fRI_wRFIkTYlzA"
+  },
+  "updated": "2026-07-01T01:29:55.547Z",
+  "episodes": [
+    {
+      "id": "hq8sC6FkC9w",
+      "title": "The Supreme Court just protected your digital privacy",
+      "published": "2026-06-29T18:11:29+00:00",
+      "summary": "",
+      "topics": [
+        "Privacy"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "5HZqFo-NA5U",
+      "title": "Can you sue an ICE agent for stopping you from filming?",
+      "published": "2026-06-26T13:19:06+00:00",
+      "summary": "Can you sue an ICE agent who stops you from filming? Constitutional lawyer Catherine Crump breaks down the Right to Record Act of 2026. Courts have widely recognized a right to record law enforcement officers carrying out their duties in public, if you don’t interfere. Many federal appeals courts have upheld it, but the Supreme Court has never ruled on…",
+      "topics": [
+        "Free Speech",
+        "Protest Rights",
+        "Immigration"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "V3VXX7IeGAw",
+      "title": "The battle for driver privacy",
+      "published": "2026-06-24T14:27:59+00:00",
+      "summary": "Automated license plate readers can help solve crimes but also pose massive privacy risks. California Senator Cervantes has proposed a bill that would require police to delete data after 30 days—an effort to balance public safety and privacy. Let’s hope the bill passes and the governor signs it",
+      "topics": [
+        "Surveillance",
+        "Privacy",
+        "Police & Policing"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "JdDuAxNeUtc",
+      "title": "The Hail Mary legal argument that defeated two of Trump’s top priorities",
+      "published": "2026-06-19T13:20:21+00:00",
+      "summary": "",
+      "topics": [
+        "Civil Liberties"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "DSqoYDRkYzM",
+      "title": "Can President Trump cancel Juneteenth?",
+      "published": "2026-06-17T13:33:21+00:00",
+      "summary": "Can President Trump cancel a federal holiday, like Juneteenth? No, only Congress can do that Last year the President failed to issue a declaration in honor of the, complaining of too many holidays instead. He did manage to issue one in honor of Leif Erikson. Let’s see what he does this year.",
+      "topics": [
+        "Equal Protection"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "az1GB60bDf8",
+      "title": "Can liberal states force ICE agents to remove their masks?",
+      "published": "2026-06-12T14:00:12+00:00",
+      "summary": "Heaps of liberal states have passed laws banning federal and local police from masking up most cases. I explain why these laws are likely unconstitutional when applied to federal agents like ICE. But they will still do much good. Masked police are a terrible idea, and when states restrict when state and local officers can mask up, they are advancing…",
+      "topics": [
+        "Police & Policing",
+        "Immigration"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "EpuHKkPNNVg",
+      "title": "Should the police use AI to write their reports?",
+      "published": "2026-06-10T14:00:24+00:00",
+      "summary": "Should the police use AI to generate their police reports? Not unless the technology is at least as accurate as unaided officer reports. Even if many of us are experimenting with AI, there is a little as high stakes as police reports. People use them to decide who to prosecute, who defined, who to put in jail. It is important…",
+      "topics": [
+        "Police & Policing"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "Z4ANollGfgg",
+      "title": "Can Trump delete his texts?",
+      "published": "2026-06-05T14:46:26+00:00",
+      "summary": "",
+      "topics": [
+        "Civil Liberties"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "mtg-T9e8-Ww",
+      "title": "What’s the right way to rename The Kennedy Center?",
+      "published": "2026-06-03T13:11:30+00:00",
+      "summary": "President Trump decided to rename the Kennedy Center after himself. I break down the legal arguments that led a judge to say no.",
+      "topics": [
+        "Civil Liberties"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "QQWN3JMJNLo",
+      "title": "Why the Supreme Court actually ruled in favor of a defendant on death row",
+      "published": "2026-05-29T15:53:47+00:00",
+      "summary": "The Supreme Court just ruled in favor of a man on death row because he was not given the chance to challenge fully whether jury selection was racially biased. The Supreme Court has strict rules for determining whether a prosecutor is striking Black people from juries due to bias, and the trial judge did not implement them correctly, the Supreme…",
+      "topics": [
+        "Due Process",
+        "Voting Rights"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "Xc3BgWKWkQY",
+      "title": "Is criticizing Charlie Kirk legal?",
+      "published": "2026-05-27T13:16:35+00:00",
+      "summary": "Can you lose your government job, or even be arrested, for criticizing Charlie Kirk? The First Amendment says no. I discuss two legal settlements, totaling over a million dollars, the government paid out for violating people’s free speech rights. After a Tennessee man was jailed for 37 days, the organization FIRE stepped in and won him a settlement. The ACLU…",
+      "topics": [
+        "Free Speech",
+        "Police & Policing"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "Ig4G2qV9ems",
+      "title": "The FBI’s real time car dragnet.",
+      "published": "2026-05-22T14:46:21+00:00",
+      "summary": "License plate readers log the plates of all passing cars. Now the FBI wants nationwide access to mass track Americans’ movements. They aren’t proposing to get a warrant. They will circumvent that by just buying the data from commercial vendors. Making matters worse, the FBI is run by Kash Patel, an erratic and unreliable director. Working for the Trump Administration…",
+      "topics": [
+        "Surveillance",
+        "Privacy"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "2ufB-GQUNjQ",
+      "title": "Why the FBI director’s lawsuit against The Atlantic will fail.",
+      "published": "2026-05-20T13:42:15+00:00",
+      "summary": "FBI director Kash Patel is a notorious filer of frivolous libel suits. He regularly files multi-million dollar claims against the media, and loses. Here is an explainer of why it’s so hard for public officials to win defamation cases—and, why that’s a good thing. The core of the First Amendment’s guarantee of free speech is being able to investigate and…",
+      "topics": [
+        "Free Speech"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "j2aF4w4KWBw",
+      "title": "The fact-checker visa ban is in court. freespeech",
+      "published": "2026-05-15T13:22:08+00:00",
+      "summary": "Can the government exclude or remove non-citizens from the country because they advocate against misinformation and push for more online content moderation? We’ll all find out. The Trump Administration is trying to do exactly that. One question is whether what the Trump Administration is doing is viewpoint discrimination in violation of the First Amendment. The judge who heard the case…",
+      "topics": [
+        "Free Speech",
+        "Equal Protection"
+      ],
+      "rights": null,
+      "sources": []
+    },
+    {
+      "id": "xzej1yhrhnM",
+      "title": "DOGE’s Illegal AI Grant Purge",
+      "published": "2026-05-13T15:31:34+00:00",
+      "summary": "It turns out that outsourcing federal grant selection to a couple of DOGE guys using AI was not just the self-evidently awful idea that it was, but unlawful and unconstitutional. Watch constitutional lawyer Catherine Crump break down the recent federal court decision holding just that. DOGE stormed the National Endowment for the Humanities and defunded grants just because the'd been…",
+      "topics": [
+        "Free Speech",
+        "Due Process",
+        "Voting Rights",
+        "Equal Protection"
+      ],
+      "rights": null,
+      "sources": []
+    }
+  ]
+}
