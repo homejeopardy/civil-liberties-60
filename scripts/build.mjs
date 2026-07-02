@@ -88,9 +88,11 @@ function extractSources(desc) {
 
 async function fetchDuration(id) {
   // The RSS feed has no duration; scrape "lengthSeconds" from the watch page (no API key).
+  // Hard timeout so a throttled/hung request can never stall the whole build.
   try {
     const res = await fetch(`https://www.youtube.com/watch?v=${id}`, {
       headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" },
+      signal: AbortSignal.timeout(10000),
     });
     if (!res.ok) return null;
     const html = await res.text();
@@ -105,7 +107,7 @@ async function resolveChannelId(handleOrId) {
   if (/^UC[\w-]{20,}$/.test(handleOrId)) return handleOrId;
   const handle = handleOrId.startsWith("@") ? handleOrId : "@" + handleOrId.replace(/^@/, "");
   const url = `https://www.youtube.com/${handle}`;
-  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" } });
+  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" }, signal: AbortSignal.timeout(20000) });
   if (!res.ok) throw new Error(`Could not load channel page ${url} (HTTP ${res.status})`);
   const html = await res.text();
   const m =
@@ -164,7 +166,7 @@ async function main() {
 
   const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
   console.log(`→ Fetching feed: ${feedUrl}`);
-  const res = await fetch(feedUrl, { headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" } });
+  const res = await fetch(feedUrl, { headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" }, signal: AbortSignal.timeout(20000) });
   if (!res.ok) {
     console.warn(`⚠️  Feed fetch failed (HTTP ${res.status}). Keeping existing data.`);
     process.exit(0);
