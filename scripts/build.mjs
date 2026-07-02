@@ -86,6 +86,21 @@ function extractSources(desc) {
   return sources;
 }
 
+async function fetchDuration(id) {
+  // The RSS feed has no duration; scrape "lengthSeconds" from the watch page (no API key).
+  try {
+    const res = await fetch(`https://www.youtube.com/watch?v=${id}`, {
+      headers: { "User-Agent": "Mozilla/5.0 (CL60 build)" },
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+    const m = html.match(/"lengthSeconds":"(\d+)"/);
+    return m ? parseInt(m[1], 10) : null;
+  } catch {
+    return null;
+  }
+}
+
 async function resolveChannelId(handleOrId) {
   if (/^UC[\w-]{20,}$/.test(handleOrId)) return handleOrId;
   const handle = handleOrId.startsWith("@") ? handleOrId : "@" + handleOrId.replace(/^@/, "");
@@ -161,6 +176,9 @@ async function main() {
     console.warn("⚠️  Feed had no videos. Keeping existing data.");
     process.exit(0);
   }
+
+  console.log(`→ Fetching real durations for ${episodes.length} videos…`);
+  await Promise.all(episodes.map(async (ep) => { ep.duration = await fetchDuration(ep.id); }));
 
   const out = {
     demo: false,

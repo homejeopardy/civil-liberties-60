@@ -13,8 +13,15 @@ const fmtDate = (iso) => {
     return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   } catch { return ""; }
 };
-const thumbUrl = (ep) => ep.demo ? "" : (ep.thumbnail || (ep.id ? `https://i.ytimg.com/vi/${ep.id}/hqdefault.jpg` : ""));
+// Shorts are vertical: oardefault.jpg is the true portrait thumbnail (fallback to hqdefault).
+const thumbUrl = (ep) => ep.demo ? "" : (ep.thumbnail || (ep.id ? `https://i.ytimg.com/vi/${ep.id}/oardefault.jpg` : ""));
+const thumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const embedUrl = (id) => `https://www.youtube.com/embed/${id}?rel=0`;
+const fmtDur = (s) => {
+  if (s == null || isNaN(s)) return "Short";
+  const m = Math.floor(s / 60), ss = s % 60;
+  return `${m}:${String(ss).padStart(2, "0")}`;
+};
 const esc = (s = "") => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 let DATA = { episodes: [] };
@@ -89,14 +96,14 @@ function renderHero(ep) {
 function card(ep, trending = false) {
   const t = thumbUrl(ep);
   const thumbInner = t
-    ? `<img src="${t}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="placeholder" style="display:none">${esc(ep.title)}</div>`
+    ? `<img src="${t}" alt="" loading="lazy" data-fb="${ep.id ? thumbFallback(ep.id) : ""}" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"><div class="placeholder" style="display:none">${esc(ep.title)}</div>`
     : `<div class="placeholder" style="display:flex">${esc(ep.title)}</div>`;
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
     <a class="card" href="episode.html?v=${encodeURIComponent(ep.id)}">
       <div class="thumb">
         ${thumbInner}
-        <span class="play-badge">▶ 60 sec</span>
+        <span class="play-badge">▶ ${fmtDur(ep.duration)}</span>
       </div>
       <div class="card-body">
         <h3>${esc(ep.title)}</h3>

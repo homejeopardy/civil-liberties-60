@@ -5,6 +5,11 @@ const esc = (s = "") => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;
 const fmtDate = (iso) => { try { return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); } catch { return ""; } };
 const thumbUrl = (ep) => ep.thumbnail || (ep.id ? `https://i.ytimg.com/vi/${ep.id}/hqdefault.jpg` : "");
 const embedUrl = (id) => `https://www.youtube.com/embed/${id}?rel=0`;
+const fmtDur = (s) => {
+  if (s == null || isNaN(s)) return null;
+  const m = Math.floor(s / 60), ss = s % 60;
+  return `${m}:${String(ss).padStart(2, "0")}`;
+};
 
 init();
 
@@ -59,7 +64,7 @@ function render(ep, eps, channel) {
       <div>
         <div class="topics">${topics.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
         <h1>${esc(ep.title)}</h1>
-        <div style="color:#5b6680;font-weight:600;margin-bottom:16px">${fmtDate(ep.published)}</div>
+        <div style="color:#5b6680;font-weight:600;margin-bottom:16px">${fmtDate(ep.published)}${fmtDur(ep.duration) ? ` · ${fmtDur(ep.duration)}` : ""}</div>
         <div class="player">${ep.demo
           ? `<div class="video-frame placeholder" style="position:relative"><span class="play-badge">▶ 60 sec</span><div style="text-align:center;padding:24px;font-size:1.1rem">${esc(ep.title)}<div style="font-weight:600;font-size:.85rem;opacity:.8;margin-top:8px">Sample episode — your real video plays here once the channel is connected.</div></div></div>`
           : `<div class="video-frame"><iframe src="${embedUrl(ep.id)}" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`}</div>

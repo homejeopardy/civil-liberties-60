@@ -5,8 +5,35 @@
     "id": "UC1WosI6t9fRI_wRFIkTYlzA",
     "url": "https://www.youtube.com/channel/UC1WosI6t9fRI_wRFIkTYlzA"
   },
-  "updated": "2026-07-01T01:29:55.547Z",
+  "updated": "2026-07-02T15:08:46.377Z",
   "episodes": [
+    {
+      "id": "Szsc4UvZ6-I",
+      "title": "Can police buy your location data?",
+      "published": "2026-07-01T12:57:51+00:00",
+      "summary": "In June 2026, the Supreme Court ruled in Chatrie v. United States that getting your location history from Google is a Fourth Amendment search. But agencies can still buy Americans' location data from commercial brokers without a warrant. I'm constitutional lawyer Catherine Crump (UC Berkeley Law) — here's the loophole Chatrie didn't close, in 60 seconds. · Chatrie opinion: ·…",
+      "topics": [
+        "Surveillance",
+        "Privacy",
+        "Police & Policing"
+      ],
+      "rights": null,
+      "sources": [
+        {
+          "label": "·       Chatrie opinion",
+          "url": "https://www.supremecourt.gov/opinions/25pdf/25-112_0am4.pdf"
+        },
+        {
+          "label": "·       NPR, \"The government is buying it without a warrant\"",
+          "url": "https://www.npr.org/2026/03/25/nx-s1-5752369/ice-surveillance-data-brokers-congress-anthropic"
+        },
+        {
+          "label": "·       Brennan Center, \"Closing the Data Broker Loophole\"",
+          "url": "https://www.brennancenter.org/our-work/research-reports/closing-data-broker-loophole"
+        }
+      ],
+      "duration": 47
+    },
     {
       "id": "hq8sC6FkC9w",
       "title": "The Supreme Court just protected your digital privacy",
@@ -16,7 +43,8 @@
         "Privacy"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 84
     },
     {
       "id": "5HZqFo-NA5U",
@@ -29,7 +57,8 @@
         "Immigration"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 92
     },
     {
       "id": "V3VXX7IeGAw",
@@ -42,7 +71,8 @@
         "Police & Policing"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 92
     },
     {
       "id": "JdDuAxNeUtc",
@@ -53,7 +83,8 @@
         "Civil Liberties"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 64
     },
     {
       "id": "DSqoYDRkYzM",
@@ -64,7 +95,8 @@
         "Equal Protection"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 79
     },
     {
       "id": "az1GB60bDf8",
@@ -76,7 +108,8 @@
         "Immigration"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 71
     },
     {
       "id": "EpuHKkPNNVg",
@@ -87,7 +120,8 @@
         "Police & Policing"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 68
     },
     {
       "id": "Z4ANollGfgg",
@@ -98,7 +132,8 @@
         "Civil Liberties"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 62
     },
     {
       "id": "mtg-T9e8-Ww",
@@ -109,7 +144,8 @@
         "Civil Liberties"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 68
     },
     {
       "id": "QQWN3JMJNLo",
@@ -121,7 +157,8 @@
         "Voting Rights"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 82
     },
     {
       "id": "Xc3BgWKWkQY",
@@ -133,7 +170,8 @@
         "Police & Policing"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 68
     },
     {
       "id": "Ig4G2qV9ems",
@@ -145,7 +183,8 @@
         "Privacy"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 90
     },
     {
       "id": "2ufB-GQUNjQ",
@@ -156,7 +195,8 @@
         "Free Speech"
       ],
       "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 102
     },
     {
       "id": "j2aF4w4KWBw",
@@ -168,21 +208,8 @@
         "Equal Protection"
       ],
       "rights": null,
-      "sources": []
-    },
-    {
-      "id": "xzej1yhrhnM",
-      "title": "DOGE’s Illegal AI Grant Purge",
-      "published": "2026-05-13T15:31:34+00:00",
-      "summary": "It turns out that outsourcing federal grant selection to a couple of DOGE guys using AI was not just the self-evidently awful idea that it was, but unlawful and unconstitutional. Watch constitutional lawyer Catherine Crump break down the recent federal court decision holding just that. DOGE stormed the National Endowment for the Humanities and defunded grants just because the'd been…",
-      "topics": [
-        "Free Speech",
-        "Due Process",
-        "Voting Rights",
-        "Equal Protection"
-      ],
-      "rights": null,
-      "sources": []
+      "sources": [],
+      "duration": 59
     }
   ]
 }
