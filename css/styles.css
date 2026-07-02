@@ -343,6 +343,47 @@ a { color: inherit; }
 /* ---------------------------- Trending strip ---------------------------- */
 .trending-band { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+/* ---------------------------- About Catherine ---------------------------- */
+.about { background: #fff; border-top: 1px solid var(--line); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 44px;
+  align-items: center;
+}
+.about-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 4px solid var(--white);
+  outline: 1px solid var(--line);
+}
+.about-copy .kicker {
+  display: block;
+  color: var(--red);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .74rem;
+  margin-bottom: 4px;
+}
+.about-copy h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--navy);
+  margin: 4px 0 14px;
+  letter-spacing: -.3px;
+}
+.about-copy p { color: var(--ink); font-size: 1.04rem; margin: 0 0 14px; max-width: 60ch; }
+.about-copy .btn { margin-top: 8px; }
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-photo { max-width: 240px; }
+}
+
 /* ---------------------------- Engage section ---------------------------- */
 .engage {
   background: var(--navy);
