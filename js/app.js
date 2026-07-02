@@ -63,13 +63,28 @@ function wireChannelLinks() {
   ["#yt-subscribe", "#yt-subscribe-2", "#yt-subscribe-3"].forEach((sel) => {
     const el = $(sel); if (el) el.href = url;
   });
-  $("#social").innerHTML = `
-    <a href="${url}" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4A3 3 0 0 0 23 16.5 31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>
-    </a>
-    <a href="mailto:${CONTACT}" aria-label="Email" title="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-    </a>`;
+  const icons = {
+    youtube: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4A3 3 0 0 0 23 16.5 31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>`,
+    tiktok: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.5 2.5 0 1 1-2.5-2.5c.26 0 .5.04.74.11V9.85a5.6 5.6 0 0 0-.74-.05 5.6 5.6 0 1 0 5.6 5.6V9.01a7.3 7.3 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.3-1.5z"/></svg>`,
+    instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>`,
+    facebook: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>`,
+    email: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>`,
+  };
+  const social = CONFIG.social || {};
+  const links = [
+    { key: "youtube", href: url, label: "YouTube" },
+    { key: "tiktok", href: social.tiktok, label: "TikTok" },
+    { key: "instagram", href: social.instagram, label: "Instagram" },
+    { key: "facebook", href: social.facebook, label: "Facebook" },
+    { key: "email", href: `mailto:${CONFIG.contactEmail || CONTACT}`, label: "Email" },
+  ];
+  $("#social").innerHTML = links
+    .filter((l) => l.href && l.href.trim())
+    .map((l) => {
+      const external = l.key !== "email" ? ' target="_blank" rel="noopener"' : "";
+      return `<a href="${l.href}"${external} aria-label="${l.label}" title="${l.label}">${icons[l.key]}</a>`;
+    })
+    .join("");
 }
 
 function showDemoBanner() {

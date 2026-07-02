@@ -7,5 +7,12 @@
 
   "//forms": "Newsletter + suggestion box. Leave blank to fall back to a plain email link.",
   "buttondown": "cli60s",
-  "formspree": "xrewopkd"
+  "formspree": "xrewopkd",
+
+  "//social": "Social links shown in the footer. Leave any blank to hide that icon.",
+  "social": {
+    "tiktok": "https://www.tiktok.com/@profcatherinecrump",
+    "instagram": "https://www.instagram.com/profcrump",
+    "facebook": ""
+  }
 }
