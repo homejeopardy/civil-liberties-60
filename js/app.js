@@ -17,7 +17,7 @@ const fmtDate = (iso) => {
 const thumbUrl = (ep) => ep.demo ? "" : (ep.thumbnail || (ep.id ? `https://i.ytimg.com/vi/${ep.id}/oardefault.jpg` : ""));
 const thumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const embedUrl = (id) => `https://www.youtube-nocookie.com/embed/${id}?rel=0`;
-const epUrl = (id) => `episode/${encodeURIComponent(id)}.html`;
+const epUrl = (id) => `episode/${encodeURIComponent(id)}`;
 const fmtDur = (s) => {
   if (s == null || isNaN(s)) return "Short";
   const m = Math.floor(s / 60), ss = s % 60;
@@ -154,7 +154,7 @@ function renderFooterTopics(eps) {
   eps.forEach((ep) => (ep.topics || []).forEach((t) => topics.add(t)));
   if (!topics.size) return;
   el.innerHTML = `<span class="footer-topics-label">Browse by topic:</span> ` +
-    [...topics].sort().map((t) => `<a href="topic/${topicSlug(t)}.html">${esc(t)}</a>`).join("");
+    [...topics].sort().map((t) => `<a href="topic/${topicSlug(t)}">${esc(t)}</a>`).join("");
 }
 
 function renderFilters(eps) {

@@ -198,14 +198,14 @@ function header(channelUrl) {
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/index.html" aria-label="Civil Liberties in 60 Seconds home">
+      <a class="brand" href="/" aria-label="Civil Liberties in 60 Seconds home">
         <img class="brand-logo" src="/assets/banner.png?v=2" alt="Civil Liberties in 60 Seconds — with Professor Catherine Crump" width="2560" height="301" />
       </a>
       <nav class="nav">
-        <a href="/index.html#archive">Episodes</a>
-        <a href="/index.html#topics">Topics</a>
-        <a href="/index.html#about-catherine">About</a>
-        <a href="/index.html#engage">Subscribe</a>
+        <a href="/#archive">Episodes</a>
+        <a href="/#topics">Topics</a>
+        <a href="/#about-catherine">About</a>
+        <a href="/#engage">Subscribe</a>
         <a class="btn btn--red" href="${esc(channelUrl)}" target="_blank" rel="noopener">Watch on YouTube</a>
       </nav>
     </div>
@@ -219,7 +219,7 @@ function footer() {
     <div class="wrap">
       <div class="legal">
         <p>Educational content only — not legal advice. For your specific situation, consult a licensed attorney.</p>
-        <p>© <span id="year"></span> Civil Liberties in 60 Seconds · <a href="/privacy.html">Privacy</a></p>
+        <p>© <span id="year"></span> Civil Liberties in 60 Seconds · <a href="/privacy">Privacy</a></p>
       </div>
     </div>
   </footer>
@@ -232,7 +232,7 @@ function footer() {
 function card(ep) {
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
-    <a class="card" href="/episode/${encodeURIComponent(ep.id)}.html">
+    <a class="card" href="/episode/${encodeURIComponent(ep.id)}">
       <div class="thumb">
         <img src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="${esc(ep.title)}" loading="lazy"
              onerror="this.onerror=null;this.src='${thumbLandscape(ep.id)}'">
@@ -247,7 +247,7 @@ function card(ep) {
 }
 
 function episodePage(ep, all, channelUrl) {
-  const url = `${SITE}/episode/${ep.id}.html`;
+  const url = `${SITE}/episode/${ep.id}`;
   const desc = clip(ep.summary || ep.title, 200);
   const topics = ep.topics || ["Civil Liberties"];
   const related = all.filter((e) => e !== ep && (e.topics || []).some((t) => topics.includes(t))).slice(0, 4);
@@ -268,7 +268,7 @@ function episodePage(ep, all, channelUrl) {
     : `<p style="color:#5b6680;margin:0">Sources are added with each episode.</p>`;
   const rights = ep.rights ? `<div class="rights-box"><b>Know your rights</b>${esc(ep.rights)}</div>` : "";
   const relatedHtml = related.length
-    ? `<div class="sidebar-card"><h4>Related episodes</h4><ul class="source-list">${related.map((e) => `<li><a href="/episode/${e.id}.html">${esc(e.title)}</a></li>`).join("")}</ul></div>`
+    ? `<div class="sidebar-card"><h4>Related episodes</h4><ul class="source-list">${related.map((e) => `<li><a href="/episode/${e.id}">${esc(e.title)}</a></li>`).join("")}</ul></div>`
     : "";
   const shareUrl = encodeURIComponent(url);
   const shareText = encodeURIComponent(`${ep.title} — Civil Liberties in 60 Seconds`);
@@ -277,10 +277,10 @@ function episodePage(ep, all, channelUrl) {
     + `
   <main class="detail" id="main">
     <div class="wrap">
-      <a class="back-link" href="/index.html#archive">← All episodes</a>
+      <a class="back-link" href="/#archive">← All episodes</a>
       <div class="detail-grid">
         <div>
-          <div class="topics">${topics.map((t) => `<a class="tag" href="/topic/${slugify(t)}.html">${esc(t)}</a>`).join("")}</div>
+          <div class="topics">${topics.map((t) => `<a class="tag" href="/topic/${slugify(t)}">${esc(t)}</a>`).join("")}</div>
           <h1>${esc(ep.title)}</h1>
           <div style="color:#5b6680;font-weight:600;margin-bottom:16px">${fmtDate(ep.published)}${ep.duration != null ? ` · ${durLabel(ep.duration)}` : ""}</div>
           <div class="player"><div class="video-frame"><iframe src="${noCookieEmbed(ep.id)}" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
@@ -312,7 +312,7 @@ function episodePage(ep, all, channelUrl) {
 
 function topicPage(topic, episodes, channelUrl) {
   const slug = slugify(topic);
-  const url = `${SITE}/topic/${slug}.html`;
+  const url = `${SITE}/topic/${slug}`;
   const desc = `60-second explainers on ${topic.toLowerCase()} from constitutional lawyer Catherine Crump. ${episodes.length} episode${episodes.length === 1 ? "" : "s"}.`;
   const jsonld = {
     "@context": "https://schema.org",
@@ -326,7 +326,7 @@ function topicPage(topic, episodes, channelUrl) {
     + `
   <main id="main" class="section">
     <div class="wrap">
-      <a class="back-link" href="/index.html#archive">← All episodes</a>
+      <a class="back-link" href="/#archive">← All episodes</a>
       <div class="section-head"><div>
         <div class="kicker">Topic</div>
         <h2>${esc(topic)}</h2>
@@ -339,11 +339,11 @@ function topicPage(topic, episodes, channelUrl) {
 }
 
 function sitemap(data) {
-  const urls = [`${SITE}/`, `${SITE}/privacy.html`];
+  const urls = [`${SITE}/`, `${SITE}/privacy`];
   const topics = new Set();
   data.episodes.forEach((e) => (e.topics || []).forEach((t) => topics.add(t)));
-  [...topics].forEach((t) => urls.push(`${SITE}/topic/${slugify(t)}.html`));
-  data.episodes.forEach((e) => urls.push(`${SITE}/episode/${e.id}.html`));
+  [...topics].forEach((t) => urls.push(`${SITE}/topic/${slugify(t)}`));
+  data.episodes.forEach((e) => urls.push(`${SITE}/episode/${e.id}`));
   const lastmod = (data.updated || "").slice(0, 10);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

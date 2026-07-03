@@ -11,7 +11,7 @@
     // Episodes are now static pages at /episode/VIDEOID.html.
     (function () {
       var id = new URLSearchParams(location.search).get("v");
-      location.replace(id ? "/episode/" + encodeURIComponent(id) + ".html" : "/index.html#archive");
+      location.replace(id ? "/episode/" + encodeURIComponent(id) : "/#archive");
     })();
   </script>
 </head>
