@@ -16,7 +16,8 @@ const fmtDate = (iso) => {
 // Shorts are vertical: oardefault.jpg is the true portrait thumbnail (fallback to hqdefault).
 const thumbUrl = (ep) => ep.demo ? "" : (ep.thumbnail || (ep.id ? `https://i.ytimg.com/vi/${ep.id}/oardefault.jpg` : ""));
 const thumbFallback = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-const embedUrl = (id) => `https://www.youtube.com/embed/${id}?rel=0`;
+const embedUrl = (id) => `https://www.youtube-nocookie.com/embed/${id}?rel=0`;
+const epUrl = (id) => `episode/${encodeURIComponent(id)}.html`;
 const fmtDur = (s) => {
   if (s == null || isNaN(s)) return "Short";
   const m = Math.floor(s / 60), ss = s % 60;
@@ -49,6 +50,7 @@ async function init() {
   renderTrending(eps.slice(0, 3));
   renderFilters(eps);
   renderArchive();
+  renderFooterTopics(eps);
 
   $("#search").addEventListener("input", (e) => { query = e.target.value.trim().toLowerCase(); renderArchive(); });
   wireForms();
@@ -102,7 +104,7 @@ function renderHero(ep) {
     : `<div class="video-frame"><iframe src="${embedUrl(ep.id)}" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
   host.innerHTML = `
     ${frame}
-    <a class="meta" href="episode.html?v=${encodeURIComponent(ep.id)}" style="text-decoration:none;color:#fff;display:block">
+    <a class="meta" href="${epUrl(ep.id)}" style="text-decoration:none;color:#fff;display:block">
       <b>Latest: ${esc(ep.title)}</b>
       <span>${fmtDate(ep.published)} · ${(ep.topics || ["Civil Liberties"]).slice(0,2).join(" · ")}</span>
     </a>`;
@@ -115,7 +117,7 @@ function card(ep, trending = false) {
     : `<div class="placeholder" style="display:flex">${esc(ep.title)}</div>`;
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
-    <a class="card" href="episode.html?v=${encodeURIComponent(ep.id)}">
+    <a class="card" href="${epUrl(ep.id)}">
       <div class="thumb">
         ${thumbInner}
         <span class="play-badge">▶ ${fmtDur(ep.duration)}</span>
@@ -135,6 +137,18 @@ function renderTrending(eps) {
   const grid = $("#trending-grid");
   if (!eps.length) { $("#trending").style.display = "none"; return; }
   grid.innerHTML = eps.map((ep) => card(ep, true)).join("");
+}
+
+const topicSlug = (s) => s.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+function renderFooterTopics(eps) {
+  const el = $("#footer-topics");
+  if (!el) return;
+  const topics = new Set();
+  eps.forEach((ep) => (ep.topics || []).forEach((t) => topics.add(t)));
+  if (!topics.size) return;
+  el.innerHTML = `<span class="footer-topics-label">Browse by topic:</span> ` +
+    [...topics].sort().map((t) => `<a href="topic/${topicSlug(t)}.html">${esc(t)}</a>`).join("");
 }
 
 function renderFilters(eps) {

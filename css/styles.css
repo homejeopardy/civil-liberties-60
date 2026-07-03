@@ -441,7 +441,23 @@ a { color: inherit; }
 }
 .social a:hover { background: var(--red); }
 .social svg { width: 20px; height: 20px; }
+.footer-topics { margin-top: 24px; font-size: .88rem; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.footer-topics-label { color: #8ea0cc; font-weight: 700; }
+.footer-topics a { color: #d7e0f5; text-decoration: none; }
+.footer-topics a:hover { color: #fff; text-decoration: underline; }
 .legal { margin-top: 22px; font-size: .82rem; color: #6f80aa; border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px; }
+.legal a { color: #aebbe0; }
+
+/* Linked topic chips (episode pages) */
+a.tag { text-decoration: none; transition: background .12s ease; }
+a.tag:hover { background: #dbe6fb; }
+
+/* Prose (privacy page) */
+.prose h3 { color: var(--navy); font-size: 1.2rem; font-weight: 800; margin: 26px 0 8px; }
+.prose p, .prose li { color: var(--ink); font-size: 1.02rem; line-height: 1.6; }
+.prose ul { padding-left: 20px; margin: 8px 0; }
+.prose li { margin: 6px 0; }
+.prose a { color: var(--navy); font-weight: 600; }
 
 /* ---------------------------- Episode detail page ---------------------------- */
 .detail { padding: 40px 0 60px; }
