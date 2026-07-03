@@ -6,7 +6,7 @@
   "contactEmail": "ccrump@clinical.law.berkeley.edu",
 
   "//analytics": "Cookieless GoatCounter. Put your code (the subdomain part of <code>.goatcounter.com). Blank = no analytics.",
-  "analytics": { "goatcounter": "" },
+  "analytics": { "goatcounter": "cli60s" },
 
   "//forms": "Newsletter + suggestion box. Leave blank to fall back to a plain email link.",
   "buttondown": "cli60s",
