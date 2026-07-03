@@ -33,6 +33,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.55;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -80,8 +81,17 @@ a { color: inherit; }
   color: var(--white);
 }
 .brand svg { width: 46px; height: 46px; border-radius: 9px; }
-.brand-logo { height: 64px; width: auto; display: block; border-radius: 8px; margin: -6px 0; }
-@media (max-width: 640px) { .brand-logo { height: 52px; } }
+/* Wide banner lockup (blends into the navy header). Width-driven so it scales to fit
+   the row; height follows. max-height caps it on wide screens. */
+.brand-logo { width: auto; max-width: min(52vw, 400px); height: auto; max-height: 50px; display: block; margin: -2px 0; }
+/* The banner is wide, so free up header room by collapsing text nav links sooner. */
+@media (max-width: 980px) { .nav a:not(.btn) { display: none; } }
+@media (max-width: 760px) { .brand-logo { max-height: 44px; } }
+/* On phones, show just the banner — the Subscribe CTA lives in the hero + footer. */
+@media (max-width: 560px) {
+  .nav { display: none; }
+  .brand-logo { max-width: 90vw; max-height: 46px; }
+}
 .brand-text { line-height: 1; }
 .brand-text b {
   display: block;
@@ -119,6 +129,7 @@ a { color: inherit; }
   border-radius: 999px;
   padding: 11px 20px;
   font-size: .95rem;
+  white-space: nowrap;
   transition: transform .12s ease, background .12s ease;
 }
 .btn:active { transform: translateY(1px); }
