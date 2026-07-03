@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DATA_PATH = join(ROOT, "data", "episodes.json");
 const CONFIG_PATH = join(ROOT, "scripts", "config.json");
-const ASSET_V = "v=7"; // bump when css/js change so returning visitors get fresh files
+const ASSET_V = "v=8"; // bump when css/js change so returning visitors get fresh files
 
 /* ---- keyword → topic taxonomy (first match wins per keyword; all matches kept) ---- */
 const TOPIC_RULES = [
@@ -186,7 +186,8 @@ function head({ title, desc, canonical, image, ogType = "website", jsonld }) {
   <link rel="icon" href="/assets/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" /></noscript>
   <link rel="stylesheet" href="/css/styles.css?${ASSET_V}" />
   ${(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n  ")}
 </head>
@@ -199,7 +200,7 @@ function header(channelUrl) {
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="/" aria-label="Civil Liberties in 60 Seconds home">
-        <img class="brand-logo" src="/assets/banner.png?v=2" alt="Civil Liberties in 60 Seconds — with Professor Catherine Crump" width="2560" height="301" />
+        <img class="brand-logo" src="/assets/banner.png?v=3" alt="Civil Liberties in 60 Seconds — with Professor Catherine Crump" width="1400" height="157" />
       </a>
       <nav class="nav">
         <a href="/#archive">Episodes</a>
@@ -224,6 +225,7 @@ function footer() {
     </div>
   </footer>
   <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+  <script src="/js/lite-yt.js?${ASSET_V}" defer></script>
   <script src="/js/analytics.js?${ASSET_V}" defer></script>
 </body>
 </html>`;
@@ -292,7 +294,10 @@ function episodePage(ep, all, channelUrl) {
           <div class="topics">${topics.map((t) => `<a class="tag" href="/topic/${slugify(t)}">${esc(t)}</a>`).join("")}</div>
           <h1>${esc(ep.title)}</h1>
           <div style="color:#5b6680;font-weight:600;margin-bottom:16px">${fmtDate(ep.published)}${ep.duration != null ? ` · ${durLabel(ep.duration)}` : ""}</div>
-          <div class="player"><div class="video-frame"><iframe src="${noCookieEmbed(ep.id)}" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+          <div class="player"><div class="video-frame lite-yt" data-id="${ep.id}" data-title="${esc(ep.title)}" role="button" tabindex="0" aria-label="Play: ${esc(ep.title)}">
+            <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='${thumbLandscape(ep.id)}'">
+            <button class="lite-yt-play" aria-hidden="true" tabindex="-1"></button>
+          </div></div>
           ${ep.summary ? `<p class="summary">${esc(ep.summary)}</p>` : ""}
           ${rights}
         </div>

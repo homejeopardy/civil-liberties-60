@@ -107,13 +107,17 @@ function renderHero(ep) {
   }
   const frame = ep.demo
     ? `<div class="video-frame placeholder" style="position:relative"><span class="play-badge">▶ 60 sec</span><div style="text-align:center;padding:24px">${esc(ep.title)}</div></div>`
-    : `<div class="video-frame"><iframe src="${embedUrl(ep.id)}" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+    : `<div class="video-frame lite-yt" data-id="${ep.id}" data-title="${esc(ep.title)}" role="button" tabindex="0" aria-label="Play: ${esc(ep.title)}">
+        <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="" onerror="this.onerror=null;this.src='${thumbFallback(ep.id)}'">
+        <button class="lite-yt-play" aria-hidden="true" tabindex="-1"></button>
+      </div>`;
   host.innerHTML = `
     ${frame}
     <a class="meta" href="${epUrl(ep.id)}" style="text-decoration:none;color:#fff;display:block">
       <b>Latest: ${esc(ep.title)}</b>
       <span>${fmtDate(ep.published)} · ${(ep.topics || ["Civil Liberties"]).slice(0,2).join(" · ")}</span>
     </a>`;
+  if (window.CL60LiteYT) window.CL60LiteYT(host);
 }
 
 function card(ep, trending = false) {

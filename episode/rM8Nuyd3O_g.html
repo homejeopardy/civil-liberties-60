@@ -19,8 +19,9 @@
   <link rel="icon" href="/assets/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=7" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/styles.css?v=8" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"The police know where you go","description":"This week the Supreme Court reaffirmed that your phone location is private (Chatrie v. United States, 6–3). California's SB 1013 would finally cap how long police can store license-plate scans of inn…","thumbnailUrl":["https://i.ytimg.com/vi/rM8Nuyd3O_g/hqdefault.jpg"],"uploadDate":"2026-07-03T16:23:03+00:00","duration":"PT1M22S","contentUrl":"https://www.youtube.com/watch?v=rM8Nuyd3O_g","embedUrl":"https://www.youtube-nocookie.com/embed/rM8Nuyd3O_g?rel=0","publisher":{"@type":"Organization","name":"Civil Liberties in 60 Seconds","logo":{"@type":"ImageObject","url":"https://cli60s.catherine-crump.com/assets/logo.png"}}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://cli60s.catherine-crump.com/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://cli60s.catherine-crump.com/topic/privacy"},{"@type":"ListItem","position":3,"name":"The police know where you go","item":"https://cli60s.catherine-crump.com/episode/rM8Nuyd3O_g"}]}</script>
 </head>
@@ -29,7 +30,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="/" aria-label="Civil Liberties in 60 Seconds home">
-        <img class="brand-logo" src="/assets/banner.png?v=2" alt="Civil Liberties in 60 Seconds — with Professor Catherine Crump" width="2560" height="301" />
+        <img class="brand-logo" src="/assets/banner.png?v=3" alt="Civil Liberties in 60 Seconds — with Professor Catherine Crump" width="1400" height="157" />
       </a>
       <nav class="nav">
         <a href="/#archive">Episodes</a>
@@ -49,7 +50,10 @@
           <div class="topics"><a class="tag" href="/topic/privacy">Privacy</a><a class="tag" href="/topic/police-and-policing">Police &amp; Policing</a></div>
           <h1>The police know where you go</h1>
           <div style="color:#5b6680;font-weight:600;margin-bottom:16px">July 3, 2026 · 1:22</div>
-          <div class="player"><div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/rM8Nuyd3O_g?rel=0" title="The police know where you go" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+          <div class="player"><div class="video-frame lite-yt" data-id="rM8Nuyd3O_g" data-title="The police know where you go" role="button" tabindex="0" aria-label="Play: The police know where you go">
+            <img class="lite-yt-thumb" src="https://i.ytimg.com/vi/rM8Nuyd3O_g/oardefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/rM8Nuyd3O_g/hqdefault.jpg'">
+            <button class="lite-yt-play" aria-hidden="true" tabindex="-1"></button>
+          </div></div>
           <p class="summary">This week the Supreme Court reaffirmed that your phone location is private (Chatrie v. United States, 6–3). California&#39;s SB 1013 would finally cap how long police can store license-plate scans of innocent drivers at 30 days. Here&#39;s why I testified for the bill, why the ICE data-sharing threat makes it urgent, and why Governor Newsom&#39;s signature is far from certain…</p>
           
         </div>
@@ -82,6 +86,7 @@
     </div>
   </footer>
   <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
-  <script src="/js/analytics.js?v=7" defer></script>
+  <script src="/js/lite-yt.js?v=8" defer></script>
+  <script src="/js/analytics.js?v=8" defer></script>
 </body>
 </html>
