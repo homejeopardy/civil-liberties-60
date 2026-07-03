@@ -127,7 +127,7 @@ function card(ep, trending = false) {
     : `<div class="placeholder" style="display:flex">${esc(ep.title)}</div>`;
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
-    <a class="card" href="${epUrl(ep.id)}">
+    <a class="card" data-reveal href="${epUrl(ep.id)}">
       <div class="thumb">
         ${thumbInner}
         <span class="play-badge">▶ ${fmtDur(ep.duration)}</span>
@@ -147,6 +147,7 @@ function renderTrending(eps) {
   const grid = $("#trending-grid");
   if (!eps.length) { $("#trending").style.display = "none"; return; }
   grid.innerHTML = eps.map((ep) => card(ep, true)).join("");
+  if (window.CL60Reveal) window.CL60Reveal(grid);
 }
 
 const topicSlug = (s) => s.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -191,6 +192,7 @@ function renderArchive() {
     return;
   }
   grid.innerHTML = eps.map((ep) => card(ep)).join("");
+  if (window.CL60Reveal) window.CL60Reveal(grid);
 }
 
 function formMessage(form, html) {

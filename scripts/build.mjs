@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DATA_PATH = join(ROOT, "data", "episodes.json");
 const CONFIG_PATH = join(ROOT, "scripts", "config.json");
-const ASSET_V = "v=8"; // bump when css/js change so returning visitors get fresh files
+const ASSET_V = "v=9"; // bump when css/js change so returning visitors get fresh files
 
 /* ---- keyword → topic taxonomy (first match wins per keyword; all matches kept) ---- */
 const TOPIC_RULES = [
@@ -226,6 +226,7 @@ function footer() {
   </footer>
   <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
   <script src="/js/lite-yt.js?${ASSET_V}" defer></script>
+  <script src="/js/reveal.js?${ASSET_V}" defer></script>
   <script src="/js/analytics.js?${ASSET_V}" defer></script>
 </body>
 </html>`;
@@ -234,7 +235,7 @@ function footer() {
 function card(ep) {
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
-    <a class="card" href="/episode/${encodeURIComponent(ep.id)}">
+    <a class="card" data-reveal href="/episode/${encodeURIComponent(ep.id)}">
       <div class="thumb">
         <img src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="${esc(ep.title)}" loading="lazy"
              onerror="this.onerror=null;this.src='${thumbLandscape(ep.id)}'">
@@ -349,7 +350,7 @@ function topicPage(topic, episodes, channelUrl) {
   <main id="main" class="section">
     <div class="wrap">
       <a class="back-link" href="/#archive">← All episodes</a>
-      <div class="section-head"><div>
+      <div class="section-head" data-reveal><div>
         <div class="kicker">Topic</div>
         <h2>${esc(topic)}</h2>
         <p>${esc(desc)}</p>

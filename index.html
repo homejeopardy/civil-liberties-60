@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" /></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=8" />
+  <link rel="stylesheet" href="css/styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -52,6 +52,10 @@
           <a class="btn btn--red" href="#archive">Browse all episodes</a>
           <a class="btn btn--ghost" id="yt-subscribe-2" href="#" target="_blank" rel="noopener">Subscribe on YouTube</a>
         </div>
+        <div class="hero-meta">
+          <span><span class="dot" aria-hidden="true"></span> New episodes every week</span>
+          <span><span class="dot" aria-hidden="true"></span> Hosted by a UC Berkeley law professor</span>
+        </div>
       </div>
       <div class="hero-video" id="hero-video"><!-- latest episode injected here --></div>
     </div>
@@ -61,7 +65,7 @@
   <!-- TRENDING strip (powered by the Tue/Thu digest cadence) -->
   <section class="section trending-band" id="trending">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <div>
           <div class="kicker">This week</div>
           <h2>Trending now</h2>
@@ -75,7 +79,7 @@
   <!-- ARCHIVE: search + topic filters + full grid -->
   <section class="section" id="archive">
     <div class="wrap">
-      <div class="section-head" id="topics">
+      <div class="section-head" id="topics" data-reveal>
         <div>
           <div class="kicker">The archive</div>
           <h2>Every episode</h2>
@@ -97,7 +101,7 @@
 
   <!-- ABOUT: who is Catherine Crump -->
   <section class="section about" id="about-catherine">
-    <div class="wrap about-grid">
+    <div class="wrap about-grid" data-reveal>
       <div class="about-photo">
         <img src="assets/catherine-crump.jpg" alt="Catherine Crump" width="1000" height="1000" loading="lazy" />
       </div>
@@ -117,7 +121,7 @@
   <section class="section engage" id="engage">
     <div class="wrap">
       <div class="engage-grid">
-        <div class="panel">
+        <div class="panel" data-reveal>
           <h3>Get the Tuesday &amp; Thursday digest</h3>
           <p>The week's most important civil-liberties moments, in your inbox twice a week.</p>
           <form id="subscribe-form">
@@ -126,7 +130,7 @@
           </form>
           <p class="field-note"><a id="bd-archive" href="#" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Read past issues →</a> · Prefer video? <a id="yt-subscribe-3" href="#" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Subscribe on YouTube →</a></p>
         </div>
-        <div class="panel">
+        <div class="panel" data-reveal>
           <h3>Suggest a topic</h3>
           <p>What right do you want explained in 60 seconds? Tell us.</p>
           <form id="suggest-form">
@@ -156,8 +160,9 @@
     </div>
   </footer>
 
-  <script src="js/lite-yt.js?v=8" defer></script>
-  <script src="js/app.js?v=8" defer></script>
-  <script src="js/analytics.js?v=8" defer></script>
+  <script src="js/lite-yt.js?v=9" defer></script>
+  <script src="js/reveal.js?v=9" defer></script>
+  <script src="js/app.js?v=9" defer></script>
+  <script src="js/analytics.js?v=9" defer></script>
 </body>
 </html>
