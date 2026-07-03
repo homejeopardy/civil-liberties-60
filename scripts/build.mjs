@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DATA_PATH = join(ROOT, "data", "episodes.json");
 const CONFIG_PATH = join(ROOT, "scripts", "config.json");
-const ASSET_V = "v=9"; // bump when css/js change so returning visitors get fresh files
+const ASSET_V = "v=10"; // bump when css/js change so returning visitors get fresh files
 
 /* ---- keyword → topic taxonomy (first match wins per keyword; all matches kept) ---- */
 const TOPIC_RULES = [
