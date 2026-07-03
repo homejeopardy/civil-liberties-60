@@ -188,7 +188,7 @@ function head({ title, desc, canonical, image, ogType = "website", jsonld }) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css?${ASSET_V}" />
-  ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ""}
+  ${(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n  ")}
 </head>
 <body>`;
 }
@@ -263,6 +263,15 @@ function episodePage(ep, all, channelUrl) {
     embedUrl: noCookieEmbed(ep.id),
     publisher: { "@type": "Organization", name: "Civil Liberties in 60 Seconds", logo: { "@type": "ImageObject", url: `${SITE}/assets/logo.png` } },
   };
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: topics[0], item: `${SITE}/topic/${slugify(topics[0])}` },
+      { "@type": "ListItem", position: 3, name: ep.title, item: url },
+    ],
+  };
   const sources = (ep.sources || []).length
     ? `<ul class="source-list">${ep.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}</ul>`
     : `<p style="color:#5b6680;margin:0">Sources are added with each episode.</p>`;
@@ -272,7 +281,7 @@ function episodePage(ep, all, channelUrl) {
     : "";
   const shareUrl = encodeURIComponent(url);
   const shareText = encodeURIComponent(`${ep.title} — Civil Liberties in 60 Seconds`);
-  return head({ title: `${ep.title} — Civil Liberties in 60 Seconds`, desc, canonical: url, image: `${SITE}/assets/og/${ep.id}.png`, ogType: "video.other", jsonld })
+  return head({ title: `${ep.title} — Civil Liberties in 60 Seconds`, desc, canonical: url, image: `${SITE}/assets/og/${ep.id}.png`, ogType: "video.other", jsonld: [jsonld, breadcrumb] })
     + header(channelUrl)
     + `
   <main class="detail" id="main">
@@ -321,7 +330,15 @@ function topicPage(topic, episodes, channelUrl) {
     description: desc,
     url,
   };
-  return head({ title: `${topic} — Civil Liberties in 60 Seconds`, desc, canonical: url, jsonld })
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: topic, item: url },
+    ],
+  };
+  return head({ title: `${topic} — Civil Liberties in 60 Seconds`, desc, canonical: url, jsonld: [jsonld, breadcrumb] })
     + header(channelUrl)
     + `
   <main id="main" class="section">

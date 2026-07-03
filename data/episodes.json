@@ -5,8 +5,21 @@
     "id": "UC1WosI6t9fRI_wRFIkTYlzA",
     "url": "https://www.youtube.com/channel/UC1WosI6t9fRI_wRFIkTYlzA"
   },
-  "updated": "2026-07-03T15:39:32.073Z",
+  "updated": "2026-07-03T16:48:56.372Z",
   "episodes": [
+    {
+      "id": "rM8Nuyd3O_g",
+      "title": "The police know where you go",
+      "published": "2026-07-03T16:23:03+00:00",
+      "summary": "This week the Supreme Court reaffirmed that your phone location is private (Chatrie v. United States, 6–3). California's SB 1013 would finally cap how long police can store license-plate scans of innocent drivers at 30 days. Here's why I testified for the bill, why the ICE data-sharing threat makes it urgent, and why Governor Newsom's signature is far from certain…",
+      "topics": [
+        "Privacy",
+        "Police & Policing"
+      ],
+      "rights": null,
+      "sources": [],
+      "duration": 82
+    },
     {
       "id": "Szsc4UvZ6-I",
       "title": "Can police buy your location data?",
@@ -197,19 +210,6 @@
       "rights": null,
       "sources": [],
       "duration": 102
-    },
-    {
-      "id": "j2aF4w4KWBw",
-      "title": "The fact-checker visa ban is in court. freespeech",
-      "published": "2026-05-15T13:22:08+00:00",
-      "summary": "Can the government exclude or remove non-citizens from the country because they advocate against misinformation and push for more online content moderation? We’ll all find out. The Trump Administration is trying to do exactly that. One question is whether what the Trump Administration is doing is viewpoint discrimination in violation of the First Amendment. The judge who heard the case…",
-      "topics": [
-        "Free Speech",
-        "Equal Protection"
-      ],
-      "rights": null,
-      "sources": [],
-      "duration": 59
     }
   ]
 }
