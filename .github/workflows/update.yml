@@ -28,6 +28,14 @@ jobs:
           node-version: 20
       - name: Pull latest episodes from YouTube
         run: node scripts/build.mjs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate branded share cards
+        run: |
+          python3 -m pip install --quiet Pillow
+          python3 scripts/gen_og.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload site

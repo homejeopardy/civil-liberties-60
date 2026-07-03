@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const DATA_PATH = join(ROOT, "data", "episodes.json");
 const CONFIG_PATH = join(ROOT, "scripts", "config.json");
-const ASSET_V = "v=6"; // bump when css/js change so returning visitors get fresh files
+const ASSET_V = "v=7"; // bump when css/js change so returning visitors get fresh files
 
 /* ---- keyword → topic taxonomy (first match wins per keyword; all matches kept) ---- */
 const TOPIC_RULES = [
@@ -195,6 +195,7 @@ function head({ title, desc, canonical, image, ogType = "website", jsonld }) {
 
 function header(channelUrl) {
   return `
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="/index.html" aria-label="Civil Liberties in 60 Seconds home">
@@ -233,7 +234,7 @@ function card(ep) {
   return `
     <a class="card" href="/episode/${encodeURIComponent(ep.id)}.html">
       <div class="thumb">
-        <img src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="" loading="lazy"
+        <img src="https://i.ytimg.com/vi/${ep.id}/oardefault.jpg" alt="${esc(ep.title)}" loading="lazy"
              onerror="this.onerror=null;this.src='${thumbLandscape(ep.id)}'">
         <span class="play-badge">▶ ${durLabel(ep.duration)}</span>
       </div>
@@ -271,10 +272,10 @@ function episodePage(ep, all, channelUrl) {
     : "";
   const shareUrl = encodeURIComponent(url);
   const shareText = encodeURIComponent(`${ep.title} — Civil Liberties in 60 Seconds`);
-  return head({ title: `${ep.title} — Civil Liberties in 60 Seconds`, desc, canonical: url, image: thumbLandscape(ep.id), ogType: "video.other", jsonld })
+  return head({ title: `${ep.title} — Civil Liberties in 60 Seconds`, desc, canonical: url, image: `${SITE}/assets/og/${ep.id}.png`, ogType: "video.other", jsonld })
     + header(channelUrl)
     + `
-  <main class="detail">
+  <main class="detail" id="main">
     <div class="wrap">
       <a class="back-link" href="/index.html#archive">← All episodes</a>
       <div class="detail-grid">
@@ -323,7 +324,7 @@ function topicPage(topic, episodes, channelUrl) {
   return head({ title: `${topic} — Civil Liberties in 60 Seconds`, desc, canonical: url, jsonld })
     + header(channelUrl)
     + `
-  <section class="section">
+  <main id="main" class="section">
     <div class="wrap">
       <a class="back-link" href="/index.html#archive">← All episodes</a>
       <div class="section-head"><div>
@@ -333,7 +334,7 @@ function topicPage(topic, episodes, channelUrl) {
       </div></div>
       <div class="grid">${episodes.map(card).join("")}</div>
     </div>
-  </section>`
+  </main>`
     + footer();
 }
 

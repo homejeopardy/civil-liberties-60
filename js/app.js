@@ -65,6 +65,12 @@ function wireChannelLinks() {
   ["#yt-subscribe", "#yt-subscribe-2", "#yt-subscribe-3"].forEach((sel) => {
     const el = $(sel); if (el) el.href = url;
   });
+  const bd = (CONFIG.buttondown || "").trim();
+  const archive = $("#bd-archive");
+  if (archive) {
+    if (bd) archive.href = `https://buttondown.com/${bd}/archive/`;
+    else archive.style.display = "none";
+  }
   const icons = {
     youtube: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 0 0 1 7.5 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1C5 19 12 19 12 19s7 0 8.9-.4A3 3 0 0 0 23 16.5 31 31 0 0 0 23.4 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>`,
     tiktok: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.5 2.5 0 1 1-2.5-2.5c.26 0 .5.04.74.11V9.85a5.6 5.6 0 0 0-.74-.05 5.6 5.6 0 1 0 5.6 5.6V9.01a7.3 7.3 0 0 0 4.3 1.38V7.3a4.3 4.3 0 0 1-3.3-1.5z"/></svg>`,
@@ -113,7 +119,7 @@ function renderHero(ep) {
 function card(ep, trending = false) {
   const t = thumbUrl(ep);
   const thumbInner = t
-    ? `<img src="${t}" alt="" loading="lazy" data-fb="${ep.id ? thumbFallback(ep.id) : ""}" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"><div class="placeholder" style="display:none">${esc(ep.title)}</div>`
+    ? `<img src="${t}" alt="${esc(ep.title)}" loading="lazy" data-fb="${ep.id ? thumbFallback(ep.id) : ""}" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}"><div class="placeholder" style="display:none">${esc(ep.title)}</div>`
     : `<div class="placeholder" style="display:flex">${esc(ep.title)}</div>`;
   const topic = (ep.topics && ep.topics[0]) || "Civil Liberties";
   return `
